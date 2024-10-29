@@ -32,7 +32,7 @@ public class AdminActivity extends AppCompatActivity {
             actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
             actionBar.setCustomView(R.layout.custom_title);
         }
-        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////test
 
 
 
