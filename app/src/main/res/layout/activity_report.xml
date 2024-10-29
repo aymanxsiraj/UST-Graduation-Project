@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReportActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sheet"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:textSize="24sp"
+                />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+                            <TextView
+                                android:id="@+id/available_day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawablePadding="10dp"
+                                android:fontFamily="sans-serif-condensed-medium"
+                                android:text="@string/available"
+                                app:drawableStartCompat="@drawable/baseline_today_24" />
+
+                            <TextView
+                                android:id="@+id/date_result_patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/date_result"
+                                android:drawablePadding="10dp"
+                                app:drawableStartCompat="@drawable/baseline_date_range_24" />
+
+                    </LinearLayout>
+
+
+
+
+                    <EditText
+                        android:id="@+id/patient_report_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_edit_text"
+                        android:hint="@string/insert_name_here"
+                        android:drawableStart="@drawable/baseline_border_color_24"
+                        android:drawablePadding="10dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:autofillHints=""
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/patient_report_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_edit_text"
+                        android:hint="@string/insert_phone_number"
+                        android:drawableStart="@drawable/baseline_call_24"
+                        android:drawablePadding="10dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:autofillHints=""
+                        android:inputType="phone" />
+
+
+                    <EditText
+                        android:id="@+id/patient_report_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_edit_text"
+                        android:hint="@string/how_old_are_you"
+                        android:drawableStart="@drawable/baseline_settings_accessibility_24"
+                        android:drawablePadding="10dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:autofillHints=""
+                        android:inputType="textPersonName" />
+
+
+                            <View
+                                android:id="@+id/divider"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="?android:attr/listDivider" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/type_description"
+                                android:fontFamily="sans-serif-condensed-medium"
+                                android:drawablePadding="10dp"
+                                app:drawableStartCompat="@drawable/baseline_description_24"
+                                />
+                            <EditText
+                                android:id="@+id/patient_description"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/border_edit_text"
+                                android:fontFamily="sans-serif-condensed-medium"
+                                android:autofillHints=""
+                                android:hint="@string/large_text"
+                                android:inputType="textMultiLine"
+                                android:gravity="top|start"
+                                android:scrollbars="vertical"
+                                android:imeActionLabel="Done"
+                                android:imeOptions="actionDone"
+                                tools:ignore="LabelFor" />
+
+                            <Button
+                                android:id="@+id/submit_appointment"
+                                style="?android:attr/buttonBarButtonStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/book_appointment_report"
+                                android:fontFamily="sans-serif-condensed-medium"
+                                />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
