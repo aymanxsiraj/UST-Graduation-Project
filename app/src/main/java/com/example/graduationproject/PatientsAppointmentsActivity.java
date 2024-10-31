@@ -3,11 +3,13 @@ package com.example.graduationproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -54,6 +56,8 @@ public class PatientsAppointmentsActivity extends AppCompatActivity {
                 .child("WorkDays").child(Objects.requireNonNull(getIntent().getStringExtra("UIDR"))).child("Patients");
         getReportData();
 
+
+
     }
 
     private void getReportData(){
@@ -66,6 +70,7 @@ public class PatientsAppointmentsActivity extends AppCompatActivity {
 
                 }
                 recyclerView.setAdapter(patientsAppointmentsAdapter);
+                checkEmpty();
             }
 
             @Override
@@ -73,5 +78,15 @@ public class PatientsAppointmentsActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(),error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void checkEmpty(){
+        CardView empty = findViewById(R.id.list_empty_appointment);
+        if(patientReportArrayList.size() == 0){
+            empty.setVisibility(View.VISIBLE);
+        }
+        else {
+            empty.setVisibility(View.GONE);
+        }
     }
 }

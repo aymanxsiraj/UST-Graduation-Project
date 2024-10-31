@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -67,6 +68,8 @@ public class HistoryFragment extends Fragment {
                 .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("History");
         getHistoryData();
 
+
+
         final TextView textView = binding.textGallery;
         historyViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
@@ -81,6 +84,7 @@ public class HistoryFragment extends Fragment {
                     patientReportArrayList.add(report);
                 }
                 recyclerView.setAdapter(patientsAppointmentsAdapter);
+                checkEmpty();
             }
 
             @SuppressLint("UseRequireInsteadOfGet")
@@ -89,6 +93,16 @@ public class HistoryFragment extends Fragment {
                 Toast.makeText(Objects.requireNonNull(getActivity()).getBaseContext(),error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void checkEmpty(){
+        CardView empty = binding.listEmptyHistory;
+        if(patientReportArrayList.size() == 0){
+            empty.setVisibility(View.VISIBLE);
+        }
+        else {
+            empty.setVisibility(View.GONE);
+        }
     }
 
     @Override

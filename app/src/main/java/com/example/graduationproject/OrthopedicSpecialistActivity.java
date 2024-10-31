@@ -3,11 +3,13 @@ package com.example.graduationproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 
@@ -52,6 +54,8 @@ public class OrthopedicSpecialistActivity extends AppCompatActivity {
                 .getReference().child("Users").child("Doctors");
         getDoctorData();
 
+
+
     }
 
     private void getDoctorData(){
@@ -67,6 +71,7 @@ public class OrthopedicSpecialistActivity extends AppCompatActivity {
                     }
                 }
                 recyclerView.setAdapter(specialistAdapter);
+                checkEmpty();
             }
 
             @Override
@@ -74,5 +79,15 @@ public class OrthopedicSpecialistActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(),error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void checkEmpty(){
+        CardView empty = findViewById(R.id.list_empty_ortho);
+        if(doctorArrayList.size() == 0){
+            empty.setVisibility(View.VISIBLE);
+        }
+        else {
+            empty.setVisibility(View.GONE);
+        }
     }
 }
