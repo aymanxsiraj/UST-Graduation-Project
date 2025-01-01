@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -19,16 +21,21 @@ public class DoctorToAdminAdapter extends RecyclerView.Adapter<DoctorToAdminAdap
     private final Context context;
     private final ArrayList<Doctor> doctorArrayList;
 
-    public DoctorToAdminAdapter(Context context, ArrayList<Doctor> doctorArrayList) {
+    private onUserClickListener listener;
+
+
+
+    public DoctorToAdminAdapter(Context context, ArrayList<Doctor> doctorArrayList, onUserClickListener listener) {
         this.context = context;
         this.doctorArrayList = doctorArrayList;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.doctor_to_admin_layout,parent,false);
-        return new Holder(view);
+        return new Holder(view,listener);
     }
 
     @Override
@@ -39,13 +46,6 @@ public class DoctorToAdminAdapter extends RecyclerView.Adapter<DoctorToAdminAdap
         holder.phone.setText(doctor.getDoctorPhone());
         holder.password.setText(doctor.getDoctorPassword());
         holder.specialist.setText(doctor.getDoctorSpecialist());
-        holder.deleteUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(v, "doctor deleted ", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override
@@ -59,15 +59,33 @@ public class DoctorToAdminAdapter extends RecyclerView.Adapter<DoctorToAdminAdap
         private final TextView phone;
         private final TextView password;
         private final TextView specialist;
-        private final Button deleteUser;
-        public Holder(@NonNull View itemView) {
+
+        public Holder(@NonNull View itemView, onUserClickListener listener) {
             super(itemView);
             name = itemView.findViewById(R.id.doctor_name_admin);
             email = itemView.findViewById(R.id.doctor_email_admin);
             phone = itemView.findViewById(R.id.doctor_phone_admin);
             password = itemView.findViewById(R.id.doctor_password_admin);
             specialist = itemView.findViewById(R.id.doctor_specialist_admin);
-            deleteUser = itemView.findViewById(R.id.admin_delete_doctor);
+
+
+            itemView.setOnClickListener(v -> {
+                if(listener != null){
+                    int position = getAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION){
+                        listener.onUserClick(position);
+                    }
+                }
+            });
         }
+    }
+
+
+    public interface onUserClickListener{
+        void onUserClick(int position);
+    }
+
+    public void setOnUserClickListener(onUserClickListener listener){
+        this.listener = listener;
     }
 }

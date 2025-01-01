@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -172,6 +173,7 @@ public class SecurityCircleActivity extends AppCompatActivity {
                 Intent intent = new Intent(SecurityCircleActivity.this, DoctorActivity.class);
                 startActivity(intent);
                 Log.d("Firebase", "Root updated successfully");
+                finish();
             } else {
                 // Update failed
                 Log.e("Firebase", "Failed to update root", task.getException());
@@ -194,6 +196,7 @@ public class SecurityCircleActivity extends AppCompatActivity {
                 Intent intent = new Intent(SecurityCircleActivity.this, PatientHomeActivity.class);
                 startActivity(intent);
                 Log.d("Firebase", "Root updated successfully");
+                finish();
             } else {
                 // Update failed
                 Log.e("Firebase", "Failed to update root", task.getException());
@@ -428,5 +431,23 @@ public class SecurityCircleActivity extends AppCompatActivity {
             Toast.makeText(getBaseContext(),e.getMessage(),Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    @Override
+    protected void onPause() {
+        finish();
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        finish();
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        finish();
+        super.onDestroy();
     }
 }

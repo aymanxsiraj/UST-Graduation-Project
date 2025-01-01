@@ -44,12 +44,18 @@ public class PatientsAppointmentsActivity extends AppCompatActivity {
         patientsAppointmentsAdapter = new PatientsAppointmentsAdapter(this, patientReportArrayList, position -> {
             PatientReport patientReport = patientReportArrayList.get(position);
             Intent intent = new Intent(PatientsAppointmentsActivity.this, FinalReportActivity.class);
-            intent.putExtra("name",patientReport.getName());
-            intent.putExtra("date",patientReport.getDate());
-            intent.putExtra("phone",patientReport.getPhone());
-            intent.putExtra("age",patientReport.getAge());
-            intent.putExtra("description",patientReport.getDescription());
+            intent.putExtra("name", patientReport.getName());
+            intent.putExtra("date", patientReport.getDate());
+            intent.putExtra("phone", patientReport.getPhone());
+            intent.putExtra("age", patientReport.getAge());
+            intent.putExtra("description", patientReport.getDescription());
+            intent.putExtra("gender", patientReport.getGender());
             startActivity(intent);
+        }, new PatientsAppointmentsAdapter.onUserLongClickListener() {
+            @Override
+            public void onUserLongClick(int position) {
+
+            }
         });
         databaseReference = FirebaseDatabase.getInstance("https://graduation-project-6b165-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference().child("Users").child("Doctors").child(Objects.requireNonNull(getIntent().getStringExtra("UID")))

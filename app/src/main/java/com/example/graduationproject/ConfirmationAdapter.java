@@ -40,6 +40,7 @@ public class ConfirmationAdapter  extends RecyclerView.Adapter<ConfirmationAdapt
         return new ConfirmationHolder(view,listener);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onBindViewHolder(@NonNull ConfirmationHolder holder, int position) {
         Confirmation mConfirmation = confirmations.get(position);
@@ -51,11 +52,14 @@ public class ConfirmationAdapter  extends RecyclerView.Adapter<ConfirmationAdapt
             setDoctorAccountConfirmationStatus(mConfirmation.getUID(),"No");
             Snackbar.make(v, "the request = REJECT ", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
+            confirmations.clear();
+
         });
         holder.accept.setOnClickListener(v -> {
             setDoctorAccountConfirmationStatus(mConfirmation.getUID(),"Yes");
             Snackbar.make(v, "the request = ACCEPT ", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
+            confirmations.clear();
         });
     }
 

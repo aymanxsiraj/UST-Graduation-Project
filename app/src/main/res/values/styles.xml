@@ -7,7 +7,6 @@
         <item name="color">#4CAF50</item>
         <item name="android:colorPrimary">#FF4CAF50</item>
         <item name="colorPrimaryDark">#FF4CAF50</item>
-
     </style>
 
     <style name="AppTheme.NoActionBar">

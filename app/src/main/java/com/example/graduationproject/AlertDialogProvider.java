@@ -40,6 +40,4 @@ public class AlertDialogProvider extends AppCompatDialogFragment {
 
     }
 
-
-
 }

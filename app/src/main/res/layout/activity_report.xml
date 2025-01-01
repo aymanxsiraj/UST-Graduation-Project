@@ -112,6 +112,26 @@
                         android:autofillHints=""
                         android:inputType="textPersonName" />
 
+                    <RadioGroup
+                        android:id="@+id/radioGroup00"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        >
+                        <RadioButton
+                            android:id="@+id/radioButton10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/male"
+                            />
+                        <RadioButton
+                            android:id="@+id/radioButton20"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/female"
+                            />
+                    </RadioGroup>
+
 
                             <View
                                 android:id="@+id/divider"
@@ -135,7 +155,7 @@
                                 android:background="@drawable/border_edit_text"
                                 android:fontFamily="sans-serif-condensed-medium"
                                 android:autofillHints=""
-                                android:hint="@string/large_text"
+                                android:hint="@string/patient_case_description"
                                 android:inputType="textMultiLine"
                                 android:gravity="top|start"
                                 android:scrollbars="vertical"

@@ -49,6 +49,7 @@ public class OrthopedicSpecialistActivity extends AppCompatActivity {
             intent.putExtra("Phone",doctor.getDoctorPhone());
             intent.putExtra("Specialist",doctor.getDoctorSpecialist());
             startActivity(intent);
+            finish();
         });
         reference = FirebaseDatabase.getInstance("https://graduation-project-6b165-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference().child("Users").child("Doctors");

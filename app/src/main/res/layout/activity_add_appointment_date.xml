@@ -146,6 +146,20 @@
                     />
             </RadioGroup>
 
+            <EditText
+                android:id="@+id/editTextPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_edit_text"
+                android:drawableStart="@drawable/baseline_price_change_24"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:ems="10"
+                android:hint="@string/appointment_price"
+                android:inputType="number"
+                tools:ignore="Autofill" />
+
             <Button
                 android:id="@+id/upload_appointment"
                 style="?android:attr/buttonBarButtonStyle"

@@ -6,4 +6,11 @@
         android:orderInCategory="100"
         android:title="@string/log_out"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        android:icon="@drawable/baseline_update_24"
+        android:title="@string/refresh"
+        app:showAsAction="ifRoom" />
 </menu>

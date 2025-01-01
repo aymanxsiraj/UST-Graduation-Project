@@ -188,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("Password",PASSWORD);
                     intent.putExtra("Type","Patient");
                     startActivity(intent);
+                    finish();
                 }
             }
         });
@@ -221,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("Password",PASSWORD);
                     intent.putExtra("Type","Doctor");
                     startActivity(intent);
+                    finish();
                 }
             }
         });

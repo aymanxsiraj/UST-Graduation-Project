@@ -46,8 +46,19 @@ public class DoctorSheetActivity extends AppCompatActivity {
             public void onUserClick(int position) {
                 WorkDays workDays = workDaysArrayList.get(position);
                 Intent intent = new Intent(DoctorSheetActivity.this, PatientsAppointmentsActivity.class);
-                intent.putExtra("UIDR",workDays.getId());
-                intent.putExtra("UID",UID);
+                intent.putExtra("UIDR", workDays.getId());
+                intent.putExtra("UID", UID);
+                startActivity(intent);
+            }
+        }, new WorkDaysAdapter.onUserLongClickListener() {
+            @Override
+            public void onUserLongClick(int position) {
+                WorkDays days = workDaysArrayList.get(position);
+                Intent intent = new Intent(DoctorSheetActivity.this, WorkDaysForDoctorActivity.class);
+                intent.putExtra("dayID",days.getId());
+                intent.putExtra("dayTAG",days.getDay());
+                intent.putExtra("dateTAG",days.getDate());
+                intent.putExtra("doctorUID",UID);
                 startActivity(intent);
             }
         });

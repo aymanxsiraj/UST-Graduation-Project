@@ -53,6 +53,57 @@ public class AdminActivity extends AppCompatActivity {
             Intent intent = new Intent(AdminActivity.this, PatientToAdminActivity.class);
             startActivity(intent);
         });
+
+        getRootItemsCountForDoctors();
+        getRootItemsCountForPatients();
+    }
+
+    public void getRootItemsCountForDoctors() {
+        // Reference to the root of the database
+        DatabaseReference rootRef = FirebaseDatabase.getInstance("https://graduation-project-6b165-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference().child("Users").child("Doctors");;
+
+        // Add a listener to read the data
+        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Get the size of root items
+                long itemCount = dataSnapshot.getChildrenCount();
+                System.out.println("Number of root items: " + itemCount);
+                TextView doctors = findViewById(R.id.doctors_size);
+                doctors.setText(String.valueOf(itemCount));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle possible errors
+                System.err.println("Error: " + databaseError.getMessage());
+            }
+        });
+    }
+
+    public void getRootItemsCountForPatients() {
+        // Reference to the root of the database
+        DatabaseReference rootRef = FirebaseDatabase.getInstance("https://graduation-project-6b165-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference().child("Users").child("Patient");;
+
+        // Add a listener to read the data
+        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Get the size of root items
+                long itemCount = dataSnapshot.getChildrenCount();
+                System.out.println("Number of root items: " + itemCount);
+                TextView doctors = findViewById(R.id.patients_size);
+                doctors.setText(String.valueOf(itemCount));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle possible errors
+                System.err.println("Error: " + databaseError.getMessage());
+            }
+        });
     }
 
 

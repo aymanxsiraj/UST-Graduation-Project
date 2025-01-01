@@ -1,14 +1,19 @@
 package com.example.graduationproject;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,7 +42,13 @@ public class PatientToAdminActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         /////////////////////////////////////
         patientArrayList = new ArrayList<>();
-        patientToAdminAdapter = new PatientToAdminAdapter(this,patientArrayList);
+        patientToAdminAdapter = new PatientToAdminAdapter(this, patientArrayList, new PatientToAdminAdapter.onUserClickListener() {
+            @Override
+            public void onUserClick(int position) {
+                Patient patient = patientArrayList.get(position);
+                UserLogin(patient.getUID(),patient.getPatientEmail(),patient.getPatientPassword());
+            }
+        });
         /////////////////////////////////////
         reference = FirebaseDatabase.getInstance("https://graduation-project-6b165-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference().child("Users").child("Patient");
@@ -66,5 +77,26 @@ public class PatientToAdminActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(),error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void UserLogin(String UID, String email,String password){
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithEmail:success");
+                        Intent intent = new Intent(PatientToAdminActivity.this, AdmitDeletePatientActivity.class);
+                        intent.putExtra("UID",UID);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithEmail:failure", task.getException());
+                        Toast.makeText(getBaseContext(), "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                        //updateUI(null);
+                    }
+                });
     }
 }

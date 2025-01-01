@@ -37,6 +37,7 @@ public class AvailableDateActivity extends AppCompatActivity {
         }
 
         /////////////////////////////////////////
+
         String UID = getIntent().getStringExtra("UID");
         recyclerView = findViewById(R.id.recycle_available);
         recyclerView.setHasFixedSize(true);
@@ -45,11 +46,17 @@ public class AvailableDateActivity extends AppCompatActivity {
         workDaysAdapter = new WorkDaysAdapter(this, workDaysArrayList, position -> {
             WorkDays workDays = workDaysArrayList.get(position);
             Intent intent = new Intent(AvailableDateActivity.this, ReportActivity.class);
-            intent.putExtra("ID",workDays.getId());
-            intent.putExtra("UID",UID);
-            intent.putExtra("DAY",workDays.getDay());
-            intent.putExtra("DATE",workDays.getDate());
+            intent.putExtra("ID", workDays.getId());
+            intent.putExtra("UID", UID);
+            intent.putExtra("DAY", workDays.getDay());
+            intent.putExtra("DATE", workDays.getDate());
             startActivity(intent);
+            finish();
+        }, new WorkDaysAdapter.onUserLongClickListener() {
+            @Override
+            public void onUserLongClick(int position) {
+
+            }
         });
         assert UID != null;
         reference = FirebaseDatabase.getInstance("https://graduation-project-6b165-default-rtdb.asia-southeast1.firebasedatabase.app/")

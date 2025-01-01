@@ -40,6 +40,7 @@ public class AddAppointmentDateActivity extends AppCompatActivity {
         TextView timeType = findViewById(R.id.work_time_type_add);
         EditText setTimeStart = findViewById(R.id.editTextTime_star);
         EditText setTimeEnd = findViewById(R.id.editTextTime_end);
+        EditText setPrice = findViewById(R.id.editTextPrice);
 
         dayName.setText(getIntent().getStringExtra("p_day_name"));
         date.setText(getIntent().getStringExtra("p_date"));
@@ -90,23 +91,24 @@ public class AddAppointmentDateActivity extends AppCompatActivity {
         uploadAppointment.setOnClickListener(v -> {
             String finalTime = timeStart.getText().toString()+" - "+timeEnd.getText().toString()+" "+timeType.getText().toString();
             //Toast.makeText(getBaseContext(),finalTime,Toast.LENGTH_LONG).show();
+            String price = setPrice.getText().toString();
 
-            if(setTimeStart.getText().toString().isEmpty() && setTimeEnd.getText().toString().isEmpty()){
-                Snackbar.make(v, "start time or end time are empty !", Snackbar.LENGTH_LONG)
+            if(setTimeStart.getText().toString().isEmpty() && setTimeEnd.getText().toString().isEmpty() && setPrice.getText().toString().isEmpty()){
+                Snackbar.make(v, "start time or end time or price are empty !", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
             else {
-                uploadWorkDays(getIntent().getStringExtra("UID"),getIntent().getStringExtra("p_day_name"),getIntent().getStringExtra("p_date"),finalTime);
+                uploadWorkDays(getIntent().getStringExtra("UID"),getIntent().getStringExtra("p_day_name"),getIntent().getStringExtra("p_date"),finalTime,price);
             }
         });
     }
 
-    private void uploadWorkDays(String UID, String day, String date, String time){
+    private void uploadWorkDays(String UID, String day, String date, String time, String price){
         DatabaseReference  mDatabase = FirebaseDatabase.getInstance("https://graduation-project-6b165-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference().child("Users").child("Doctors").child(UID);
         String uniqueID = mDatabase.push().getKey();
         assert uniqueID != null;
-        WorkDays workDays = new WorkDays(uniqueID,day,date,time);
+        WorkDays workDays = new WorkDays(uniqueID,day,date,time,price);
         mDatabase.child("WorkDays").child(uniqueID).setValue(workDays);
         Intent intent = new Intent(AddAppointmentDateActivity.this,DoctorSheetActivity.class);
         intent.putExtra("UID",UID);

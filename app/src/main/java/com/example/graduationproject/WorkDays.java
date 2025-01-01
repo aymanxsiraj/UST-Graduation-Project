@@ -7,15 +7,17 @@ public class WorkDays {
     private String date;
 
     private String time;
+    private String price;
 
     public WorkDays() {
     }
 
-    public WorkDays(String id,String day, String date, String time) {
+    public WorkDays(String id,String day, String date, String time, String price) {
         this.id = id;
         this.day = day;
         this.date = date;
         this.time = time;
+        this.price = price;
     }
 
     public String getId() {
@@ -48,5 +50,13 @@ public class WorkDays {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }

@@ -39,10 +39,14 @@ public class StatusCheckActivity extends AppCompatActivity {
 
         ///////////////////////////////////////////////////
 
-        databaseReference = FirebaseDatabase
-                .getInstance("https://graduation-project-6b165-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
-        AutoUserLogin(getIntent().getStringExtra("UID"));
-
+        try {
+            databaseReference = FirebaseDatabase
+                    .getInstance("https://graduation-project-6b165-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+            AutoUserLogin(getIntent().getStringExtra("UID"));
+        }
+        catch (Exception e){
+            Toast.makeText(getBaseContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+        }
 
     }
 

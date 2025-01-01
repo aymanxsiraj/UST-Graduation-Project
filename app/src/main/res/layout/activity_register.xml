@@ -157,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="@string/use_other_methods"
+                    android:text="@string/_2024"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="12sp" />
@@ -170,26 +170,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="30dp"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:importantForAccessibility="no"
-                    android:src="@drawable/ic_facebook" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:importantForAccessibility="no"
-                    android:src="@drawable/ic_google_plus" />
-            </LinearLayout>
 
 
         </LinearLayout>

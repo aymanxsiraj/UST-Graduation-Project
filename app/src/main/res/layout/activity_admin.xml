@@ -60,9 +60,9 @@
                             app:cardCornerRadius="10dp"
                             >
                             <ImageView
-                                android:layout_width="150dp"
-                                android:layout_height="150dp"
-                                android:src="@drawable/confirm"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/survey"
                                 tools:ignore="ContentDescription" />
                         </androidx.cardview.widget.CardView>
                         <TextView
@@ -94,9 +94,9 @@
                             app:cardCornerRadius="10dp"
                             >
                             <ImageView
-                                android:layout_width="150dp"
-                                android:layout_height="150dp"
-                                android:src="@drawable/doctorsicon"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/doctor"
                                 tools:ignore="ContentDescription" />
                         </androidx.cardview.widget.CardView>
                         <TextView
@@ -135,9 +135,9 @@
                             app:cardElevation="10dp"
                             >
                             <ImageView
-                                android:layout_width="150dp"
-                                android:layout_height="150dp"
-                                android:src="@drawable/patiens"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/patient"
                                 tools:ignore="ContentDescription" />
                         </androidx.cardview.widget.CardView>
                         <TextView
@@ -169,8 +169,8 @@
                             >
                             <TextView
                                 android:id="@+id/patients_size"
-                                android:layout_width="150dp"
-                                android:layout_height="150dp"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
                                 android:text="@string/patients_size"
                                 android:fontFamily="sans-serif-condensed-medium"
                                 android:gravity="center"
@@ -213,8 +213,8 @@
                             >
                             <TextView
                                 android:id="@+id/doctors_size"
-                                android:layout_width="150dp"
-                                android:layout_height="150dp"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
                                 android:text="@string/doctors_size"
                                 android:fontFamily="sans-serif-condensed-medium"
                                 android:gravity="center"

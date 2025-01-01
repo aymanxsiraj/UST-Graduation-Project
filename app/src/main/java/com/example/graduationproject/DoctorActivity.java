@@ -15,7 +15,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import android.widget.Button;
+import android.view.View;
+
 
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
@@ -76,10 +77,12 @@ public class DoctorActivity extends AppCompatActivity {
             intent.putExtra("email",profileEmail);
             intent.putExtra("phone",profilePhone);
             intent.putExtra("password",profilePassword);
+            intent.putExtra("key","doctor");
             startActivity(intent);
         });
 
-        Button sheet = findViewById(R.id.listing);
+
+        TextView sheet = findViewById(R.id.listing);
         sheet.setOnClickListener(v -> {
             Intent intent = new Intent(DoctorActivity.this,DoctorSheetActivity.class);
             intent.putExtra("UID",currentUser.getUid());
@@ -132,6 +135,21 @@ public class DoctorActivity extends AppCompatActivity {
 
 
 
+        TextView about_me = findViewById(R.id.about_me_doctor);
+        LinearLayout about_me_layout = findViewById(R.id.about_the_doctor);
+        about_me.setOnClickListener(v -> about_me_layout.setVisibility(View.VISIBLE));
+        about_me.setOnLongClickListener(v -> {
+            about_me_layout.setVisibility(View.GONE);
+            return false;
+        });
+
+        TextView create_new_appointment = findViewById(R.id.create_new_appointment);
+        LinearLayout linearLayout = findViewById(R.id.create_new_appointment_layout);
+        create_new_appointment.setOnClickListener(v -> linearLayout.setVisibility(View.VISIBLE));
+        create_new_appointment.setOnLongClickListener(v -> {
+            linearLayout.setVisibility(View.GONE);
+            return false;
+        });
 
 
 
@@ -226,6 +244,13 @@ public class DoctorActivity extends AppCompatActivity {
     }
 
 
+    private void refreshData() {
+        // Your code to refresh the activity or data
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+    }
 
 
     public void openDialog(){
@@ -248,8 +273,8 @@ public class DoctorActivity extends AppCompatActivity {
             openDialog();
             return true;
         }
-        else if(item.getItemId() == R.id.action_logout){
-            Toast.makeText(getBaseContext(),"action about",Toast.LENGTH_LONG).show();
+        else if(item.getItemId() == R.id.action_refresh){
+            refreshData();
             return true;
         }
         return false;

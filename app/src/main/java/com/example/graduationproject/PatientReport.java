@@ -7,15 +7,20 @@ public class PatientReport {
     private String age;
     private String description;
 
+    private String id;
+    private String gender;
+
     public PatientReport() {
     }
 
-    public PatientReport(String date, String name, String phone, String age, String description) {
+    public PatientReport(String date, String name, String phone, String age, String description, String gender,String id) {
         this.date = date;
         this.name = name;
         this.phone = phone;
         this.age = age;
         this.description = description;
+        this.gender = gender;
+        this.id = id;
     }
 
     public String getDate() {
@@ -56,5 +61,21 @@ public class PatientReport {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

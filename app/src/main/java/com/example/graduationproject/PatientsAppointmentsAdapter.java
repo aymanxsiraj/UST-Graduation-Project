@@ -17,17 +17,20 @@ public class PatientsAppointmentsAdapter extends RecyclerView.Adapter<PatientsAp
     private final ArrayList<PatientReport> patientReportArrayList;
     private onUserClickListener listener;
 
-    public PatientsAppointmentsAdapter(Context context, ArrayList<PatientReport> patientReportArrayList, onUserClickListener listener) {
+    private onUserLongClickListener longClickListener;
+
+    public PatientsAppointmentsAdapter(Context context, ArrayList<PatientReport> patientReportArrayList, onUserClickListener listener, onUserLongClickListener longClickListener) {
         this.context = context;
         this.patientReportArrayList = patientReportArrayList;
         this.listener = listener;
+        this.longClickListener = longClickListener;
     }
 
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.patients_appointments_layout,parent,false);
-        return new Holder(view,listener);
+        return new Holder(view,listener,longClickListener);
     }
 
     @Override
@@ -49,12 +52,13 @@ public class PatientsAppointmentsAdapter extends RecyclerView.Adapter<PatientsAp
         private final TextView name;
         private final TextView age;
         private final TextView phone;
-        public Holder(@NonNull View itemView,onUserClickListener listener) {
+        public Holder(@NonNull View itemView,onUserClickListener listener,onUserLongClickListener longClickListener) {
             super(itemView);
             date = itemView.findViewById(R.id.date_from_report);
             name = itemView.findViewById(R.id.name_from_report);
             age = itemView.findViewById(R.id.age_from_report);
             phone = itemView.findViewById(R.id.phone_from_report);
+
             itemView.setOnClickListener(v -> {
                 if(listener != null){
                     int position = getAdapterPosition();
@@ -62,6 +66,16 @@ public class PatientsAppointmentsAdapter extends RecyclerView.Adapter<PatientsAp
                         listener.onUserClick(position);
                     }
                 }
+            });
+
+            itemView.setOnLongClickListener(v -> {
+                if(longClickListener != null){
+                    int position = getAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION){
+                        longClickListener.onUserLongClick(position);
+                    }
+                }
+                return false;
             });
         }
     }
@@ -72,4 +86,15 @@ public class PatientsAppointmentsAdapter extends RecyclerView.Adapter<PatientsAp
     public void setOnUserClickListener(onUserClickListener listener){
         this.listener = listener;
     }
+
+    //////////////////////
+
+    public interface onUserLongClickListener{
+        void onUserLongClick(int position);
+    }
+
+    public void setOnUserLongClickListener(onUserLongClickListener longClickListener){
+        this.longClickListener = longClickListener;
+    }
+
 }

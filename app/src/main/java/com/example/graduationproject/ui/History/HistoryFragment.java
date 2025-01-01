@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.graduationproject.FinalReportActivity;
 import com.example.graduationproject.PatientReport;
 import com.example.graduationproject.PatientsAppointmentsAdapter;
+import com.example.graduationproject.RemoveHistoryActivity;
 import com.example.graduationproject.databinding.FragmentGalleryBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -55,12 +56,24 @@ public class HistoryFragment extends Fragment {
         patientsAppointmentsAdapter = new PatientsAppointmentsAdapter(getActivity().getApplicationContext(), patientReportArrayList, position -> {
             PatientReport patientReport = patientReportArrayList.get(position);
             Intent intent = new Intent(Objects.requireNonNull(getActivity()).getBaseContext(), FinalReportActivity.class);
-            intent.putExtra("name",patientReport.getName());
-            intent.putExtra("date",patientReport.getDate());
-            intent.putExtra("phone",patientReport.getPhone());
-            intent.putExtra("age",patientReport.getAge());
-            intent.putExtra("description",patientReport.getDescription());
+            intent.putExtra("name", patientReport.getName());
+            intent.putExtra("date", patientReport.getDate());
+            intent.putExtra("phone", patientReport.getPhone());
+            intent.putExtra("age", patientReport.getAge());
+            intent.putExtra("description", patientReport.getDescription());
+            intent.putExtra("gender",patientReport.getGender());
             startActivity(intent);
+        }, new PatientsAppointmentsAdapter.onUserLongClickListener() {
+            @Override
+            public void onUserLongClick(int position) {
+                PatientReport patientReport = patientReportArrayList.get(position);
+                Intent intent = new Intent(getActivity(), RemoveHistoryActivity.class);
+                intent.putExtra("UID", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
+                intent.putExtra("historyID",patientReport.getId());
+                intent.putExtra("historyName",patientReport.getName());
+                intent.putExtra("historyDate",patientReport.getDate());
+                startActivity(intent);
+            }
         });
 
         reference = FirebaseDatabase.getInstance("https://graduation-project-6b165-default-rtdb.asia-southeast1.firebasedatabase.app/")

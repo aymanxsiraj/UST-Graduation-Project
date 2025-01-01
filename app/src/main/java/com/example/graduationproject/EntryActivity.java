@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -34,18 +35,24 @@ public class EntryActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
         /////////////////////////////////////
-        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
-            Intent intent = new Intent(EntryActivity.this,StatusCheckActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.putExtra("UID",FirebaseAuth.getInstance().getCurrentUser().getUid());
-            startActivity(intent);
-            finish();
+        try {
+            if(FirebaseAuth.getInstance().getCurrentUser()!=null){
+                Toast.makeText(getBaseContext(),"detect id",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(EntryActivity.this,StatusCheckActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.putExtra("UID",FirebaseAuth.getInstance().getCurrentUser().getUid());
+                startActivity(intent);
+                finish();
+            }
+            else {
+                Intent intent = new Intent(EntryActivity.this,MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
         }
-        else {
-            Intent intent = new Intent(EntryActivity.this,MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
+        catch (Exception e){
+            Toast.makeText(getBaseContext(),e.getMessage(),Toast.LENGTH_LONG).show();
         }
     }
 }

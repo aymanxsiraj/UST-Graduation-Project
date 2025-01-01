@@ -1,244 +1,223 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FDF5F5"
     tools:context=".FinalReportActivity">
+
+    <!-- Toolbar -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:elevation="4dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/report_details"
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColor="#000000"
+            android:drawableStart="@drawable/baseline_arrow_back_ios_new_24"
+            android:drawablePadding="10dp"
+            android:textStyle="bold"
+            tools:ignore="UseCompatTextViewDrawableXml" />
+    </LinearLayout>
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.cardview.widget.CardView
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginBottom="10dp"
-            app:cardElevation="5dp">
-
+            android:orientation="vertical"
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_edit_text"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="16dp"
+                android:background="#FFFFFF"
+                android:elevation="2dp"
+                android:layout_marginTop="16dp">
 
                 <TextView
+                    android:id="@+id/final_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:text="@string/name"
+                    android:textSize="16sp"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="@string/graduation_project"
-                    android:textSize="24sp" />
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/final_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="sans-serif-condensed-medium"
-                    android:text="@string/integrated_clinic_application"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="sans-serif-condensed-medium"
-                    android:text="@string/appointment_booking_report"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="sans-serif-condensed-medium"
-                    android:text="@string/university_of_science_and_technology"
-                    android:textSize="18sp" />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:drawablePadding="10dp"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:text="@string/name_re"
-                            android:textSize="14sp"
-                            app:drawableStartCompat="@drawable/baseline_account_circle_24" />
-
-                        <TextView
-                            android:id="@+id/final_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:text="@string/name_re_val"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:drawablePadding="10dp"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:text="@string/date_re"
-                            android:textSize="14sp"
-                            app:drawableStartCompat="@drawable/baseline_calendar_month_24" />
-
-                        <TextView
-                            android:id="@+id/final_date"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:text="@string/date_re_val"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="10dp"
-                    android:background="#514F4F" />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:baselineAligned="false"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:drawablePadding="10dp"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:text="@string/phone_re"
-                            android:textSize="14sp"
-                            app:drawableStartCompat="@drawable/baseline_phone_iphone_24" />
-
-                        <TextView
-                            android:id="@+id/final_phone"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:text="@string/phone_re_val"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:drawablePadding="10dp"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:text="@string/age_re"
-                            android:textSize="14sp"
-                            app:drawableStartCompat="@drawable/baseline_account_circle_24" />
-
-                        <TextView
-                            android:id="@+id/final_age"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:text="@string/age_re_val"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#514F4F" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="sans-serif-condensed-medium"
-                    android:text="@string/description_re"
+                    android:text="@string/date_re"
                     android:textSize="14sp"
-                    app:drawableStartCompat="@drawable/baseline_report_24" />
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textColor="#666666"
+                    android:layout_marginTop="8dp" />
+
+                <!-- Other details -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/final_patient_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:text="@string/patient_n"
+                        android:textSize="14sp"
+                        android:textColor="#666666" />
+
+                    <TextView
+                        android:id="@+id/final_phone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:text="@string/phone_re"
+                        android:textSize="14sp"
+                        android:textColor="#666666" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/final_age"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/age"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:textSize="14sp"
+                        android:textColor="#666666" />
+
+                    <TextView
+                        android:id="@+id/final_gender"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:text="@string/gender"
+                        android:textSize="14sp"
+                        android:textColor="#666666" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total: $403.00"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textColor="#FF0000"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- des -->
+
+            <LinearLayout
+                android:id="@+id/patient_open_dec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="#FFFFFF"
+                android:elevation="2dp"
+                android:layout_marginTop="16dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/case_description"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/final_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:fontFamily="sans-serif-condensed-medium"
-                    android:text="@string/description_case"
-                    android:textSize="14sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="#514F4F" />
-
-                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:text="@string/description_case"
+                    android:textSize="14sp"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="@string/thank_you"
-                    android:textSize="14sp" />
+                    android:textColor="#666666"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    />
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
+            <!-- QR Code -->
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:src="@drawable/qrcode"
+                android:layout_marginTop="16dp"
+                tools:ignore="ContentDescription" />
 
+            <!-- Notice -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/just_scan_the_qr_code_to_download_the_app"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:gravity="center"
+                android:layout_marginTop="16dp" />
+
+            <!-- Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:gravity="center">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/done"
+                    android:backgroundTint="#CCCCCC"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textColor="#000000"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/take_save"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/save"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
     </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Details Section -->
+
+</LinearLayout>

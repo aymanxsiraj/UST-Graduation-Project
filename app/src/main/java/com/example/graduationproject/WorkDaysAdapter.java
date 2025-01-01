@@ -17,17 +17,20 @@ public class WorkDaysAdapter extends RecyclerView.Adapter<WorkDaysAdapter.Holder
 
     private onUserClickListener listener;
 
-    public WorkDaysAdapter(Context context, ArrayList<WorkDays> workDaysArrayList, onUserClickListener listener) {
+    private onUserLongClickListener longClickListener;
+
+    public WorkDaysAdapter(Context context, ArrayList<WorkDays> workDaysArrayList, onUserClickListener listener, onUserLongClickListener longClickListener) {
         this.context = context;
         this.workDaysArrayList = workDaysArrayList;
         this.listener = listener;
+        this.longClickListener = longClickListener;
     }
 
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.work_days_layout,parent,false);
-        return new Holder(view,listener);
+        return new Holder(view,listener,longClickListener);
     }
 
     @Override
@@ -47,7 +50,7 @@ public class WorkDaysAdapter extends RecyclerView.Adapter<WorkDaysAdapter.Holder
         public TextView day;
         public TextView date;
         public TextView time;
-        public Holder(@NonNull View itemView,onUserClickListener listener) {
+        public Holder(@NonNull View itemView,onUserClickListener listener, onUserLongClickListener longClickListener) {
             super(itemView);
             day = itemView.findViewById(R.id.work_day_day);
             date = itemView.findViewById(R.id.work_day_date);
@@ -60,6 +63,18 @@ public class WorkDaysAdapter extends RecyclerView.Adapter<WorkDaysAdapter.Holder
                     }
                 }
             });
+
+
+
+            itemView.setOnLongClickListener(v -> {
+                if(longClickListener != null){
+                    int position = getAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION){
+                        longClickListener.onUserLongClick(position);
+                    }
+                }
+                return false;
+            });
         }
     }
 
@@ -69,5 +84,14 @@ public class WorkDaysAdapter extends RecyclerView.Adapter<WorkDaysAdapter.Holder
 
     public void setOnUserClickListener(onUserClickListener listener){
         this.listener = listener;
+    }
+
+    ///////////
+
+    public interface onUserLongClickListener{
+        void onUserLongClick(int position);
+    }
+    public void setOnUserLongClickListener(onUserLongClickListener listener){
+        this.longClickListener = listener;
     }
 }
